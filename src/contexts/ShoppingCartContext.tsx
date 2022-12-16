@@ -27,10 +27,6 @@ export const ShoppingCartProvider: React.FC<ShoppingCartProviderType> = ({childr
         (quantity, item) => item.quantity + quantity, 0
     )
 
-    // const getItemQuantity = (articleNumber: any) => {
-    //     return cartItems.find(item => item.articleNumber === articleNumber)?.quantity || 0
-    // }
-
     const incrementQuantity = (cartItem: CartItem) => {
         const {articleNumber, product} = cartItem
 

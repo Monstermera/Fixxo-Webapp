@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react'
-import Clearance from '../sections/home/Clearance'
 import MainMenu from '../sections/MainMenu'
 import PamelaTopPicks from '../sections/home/PamelaTopPicks'
 import ShowCase from '../sections/home/ShowCase'

@@ -9,7 +9,7 @@ export interface IProductContext {
     setProductRequest: React.Dispatch<React.SetStateAction<ProductRequest>>
     products: Product[]
     create: (e: React.FormEvent) => void
-    get: (articleNumber: string) => void
+    get: (articleNumber: string | undefined) => void
     getAll: () => void
     update: (e: React.FormEvent) => void
     remove: (articleNumber: string) => void
@@ -30,6 +30,8 @@ const ProductHandleProvider = ({children}: ProductProviderProps) => {
     const [productRequest, setProductRequest] = useState<ProductRequest>(productRequest_default)
     const [products, setProducts] = useState<Product[]>([])
 
+
+    // CREATE
     const create = async (e: React.FormEvent) => {
         e.preventDefault()
 
@@ -43,28 +45,34 @@ const ProductHandleProvider = ({children}: ProductProviderProps) => {
 
         if (result.status === 201) {
             setProductRequest(productRequest_default)
-            console.log(await result.json())
         } else {
             console.log('error')
         }
     }
 
-    const get = async (articleNumber: string) => {
-        const result = await fetch (`${baseUrl}/${articleNumber}`)
+
+    // GET ONE PRODUCT
+    const get = async (articleNumber: string | undefined) => {
+        console.log('get: ', articleNumber)
+        const result = await fetch (`${baseUrl}/product/details/${articleNumber}`)
         if (result.status === 200)
             setProduct(await result.json())
     }
 
+
+    // GET ALL PRODUCTS
     const getAll = async () => {
         const result = await fetch(`${baseUrl}`)
         if (result.status === 200)
             setProducts(await result.json())
     }
 
+
+    // UPDATE
     const update = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        const result = await fetch (`${baseUrl}/product/details/${product.articleNumber}`, {
+        const result = await fetch (`${baseUrl}/${product.articleNumber}`, {
             method: 'put',
             headers: {
                 'Content-Type': 'application/json'
@@ -72,10 +80,15 @@ const ProductHandleProvider = ({children}: ProductProviderProps) => {
             body: JSON.stringify(product)
         })
 
-        if (result.status === 200)
-            setProduct(await result.json())
+        if (result.status === 200) {
+            // setProduct(await result.json())
+            const data = await result.json()
+            console.log(data)
+        }
     }
 
+
+    // REMOVE
     const remove = async (articleNumber: string) => {
         const result = await fetch (`${baseUrl}/${articleNumber}`,{
         method: 'delete',
@@ -84,6 +97,7 @@ const ProductHandleProvider = ({children}: ProductProviderProps) => {
     if (result.status === 204)
         setProduct(product_default)
     }
+
 
   return (
     <ProductContext.Provider value= {{product, setProduct, productRequest, setProductRequest, products, create, get, getAll, update, remove}}>

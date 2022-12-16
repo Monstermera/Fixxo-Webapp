@@ -36,7 +36,7 @@ const validate_name = (value: string) => {
     if (!value)
         return 'A name is required'
     else if (value.length < 2)
-        return 'Must be a valid name'
+        return 'Must contain at least two characters'
     else
         return null
 }
@@ -56,7 +56,7 @@ export const validateText = (elementName: string, value: string, minLength:numbe
     if (value.length == 0)
         return `${elementName} is required`
     else if (value.length < minLength)
-        return `${elementName} must contain at least ${minLength} characters`
+        return 'Comments must contain at least five characters'
     else
         return ''
 }

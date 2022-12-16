@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { submitData, validate, validateText } from '../../scripts/validation'
+import { submitData, validate, validateText } from '../../scripts/contactValidation'
 
 const ContactForm = () => {
   const [name, setName] = useState<string>('')
@@ -49,7 +49,6 @@ const ContactForm = () => {
         
         setName('')
         setEmail('')
-        setComments('')
         setErrors({name, email, comments})
 
         if(await submitData('https://win22-webapi.azurewebsites.net/api/contactform', 'POST', json, )) {

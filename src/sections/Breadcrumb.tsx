@@ -6,6 +6,7 @@ interface BreadcrumbType {
 }
 
 const Breadcrumb: React.FC<BreadcrumbType> = ({currentPage}) => {
+  
   return (
     <section className= "breadcrumb">
       <div className="container">

@@ -1,25 +1,24 @@
 import React, { useEffect } from 'react'
-import { currencyFormatter } from '../utilities/currencyFormatter';
 import { IProductContext, ProductContext } from './context/ItemContext'
 import { Product } from './models/ItemModel';
 import { NavLink } from 'react-router-dom'
 
 
 const ItemList: React.FC = () => {
-    const { products, getAll, update, remove } = React.useContext(ProductContext) as IProductContext;
+    const { products, getAll, remove } = React.useContext(ProductContext) as IProductContext;
 
     useEffect (() => {
         getAll()
 
-    }, [getAll])
+    }, []) // eslint-disable-line
 
   return (
     <>
-    <h3 className="display-6 mb-5">List of Products</h3>
+      <h3 className="display-6 mb-4">List of Products</h3>
 
       <div className="col">
         <div className="card">
-          <div className="row row-cols-1 row-cols-md-3 g-4">
+          <div className="row row-cols-1 row-cols-md-2 g-4">
             {
               products.map((product: Product) => (
                 <div key={product.articleNumber} className="mb-3">
@@ -45,7 +44,6 @@ const ItemList: React.FC = () => {
             </div>       
           </div>
         </div>
-        
     </>
   )
 }

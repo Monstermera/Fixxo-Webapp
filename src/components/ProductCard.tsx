@@ -17,7 +17,7 @@ const ProductCard: React.FC<ProductCardType> = ({item}) => {
                         <button className="menu-link"><i className="fa-regular fa-code-compare"></i></button>
                         <button onClick={() => incrementQuantity({articleNumber: item.articleNumber, product: item, quantity: 1})} className="menu-link"><i className="fa-light fa-bag-shopping"></i></button>
                     </div>
-                <NavLink to={`/products/${item.articleNumber}`} className="btn-theme d-xl-none">QUICK VIEW</NavLink>
+                    <NavLink to={`/products/${item.articleNumber}`} className="btn-theme d-xl-none">QUICK VIEW</NavLink>
                 </div>
                 <div className="card-body">
                     <p className="card-text">{item.category}</p>

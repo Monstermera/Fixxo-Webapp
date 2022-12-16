@@ -9,11 +9,11 @@ const CreateForm = () => {
 
     return (
       <>
-      <div className="container mt-5">
-        <MainMenu />
-        <Breadcrumb currentPage={"API"} /> 
+        <MainMenu />      
+        <div className="container" style={{"maxWidth": "1110px"}}>
+        <Breadcrumb currentPage={"API / Create"} /> 
 
-          <form onSubmit={create} className="d-grid mb-5">
+          <form onSubmit={create} noValidate className="d-grid mb-5">
               <h3 className="display-6 mb-4">Create Product</h3>
               <input value={productRequest.tag} onChange={(e) => setProductRequest ({...productRequest, tag: e.target.value })} type="text" className="form-control py-2 mb-3" placeholder="Enter tag..." />
               <input value={productRequest.name} onChange={(e) => setProductRequest ({...productRequest, name: e.target.value })} type="text" className="form-control py-2 mb-3" placeholder="Enter name..." />
@@ -35,7 +35,7 @@ const CreateForm = () => {
                 <option value="Watches">Watches</option>      
               </select> 
 
-              <div className=" d-grid mt-3">
+              <div className="d-grid mt-3">
                 <input value={productRequest.price || ''} onChange={(e) => setProductRequest ({...productRequest, price: parseInt (e.target.value )})} type="number" className="form-control py-2 mb-3"  placeholder="Enter price..." />
                 <input value={productRequest.rating || ''} onChange={(e) => setProductRequest ({...productRequest, rating: parseInt (e.target.value )})} type="number" className="form-control py-2 mb-3" placeholder="Enter rating.." />
                 <input value={productRequest.imageName} onChange={(e) => setProductRequest ({...productRequest, imageName: e.target.value })} type="text" className="form-control py-2 mb-3" placeholder="Enter URL (optional)" />

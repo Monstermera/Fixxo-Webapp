@@ -1,6 +1,5 @@
 import React from 'react'
 import ProductCard from '../components/ProductCard'
-import { ProductItem } from '../models/ProductModel'
 import { ProductGridType } from '../models/ProductModel'
 
 const ProductGrid: React.FC<ProductGridType> = ({title, items = []}) => {

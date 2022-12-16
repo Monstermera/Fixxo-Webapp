@@ -2,8 +2,8 @@ import React from 'react'
 import ShowCaseLeft from '../../assets/images/showcase-one.png';
 import ShowCaseRight from '../../assets/images/showcase-two.png';
 
-
 const ShowCase: React.FC = () => {
+
   return (
     <section className="showcase">
         <div className="container">

@@ -27,7 +27,4 @@ describe(ContactForm, () => {
         const buttonEl = screen.getByRole('button');
         expect(buttonEl).toBeInTheDocument()
     })
-
-
-
 })
